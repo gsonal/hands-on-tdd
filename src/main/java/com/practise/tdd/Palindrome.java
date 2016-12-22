@@ -1,4 +1,4 @@
-package com.practise.hands_on_tdd;
+package com.practise.tdd;
 
 public class Palindrome {
 

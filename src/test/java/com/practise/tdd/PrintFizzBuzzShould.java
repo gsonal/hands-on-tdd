@@ -1,6 +1,10 @@
-package com.practise.hands_on_tdd;
+package com.practise.tdd;
 
+import static com.practise.tdd.common.FizzBuzzStrings.BUZZ;
+import static com.practise.tdd.common.FizzBuzzStrings.FIZZ;
+import static com.practise.tdd.common.FizzBuzzStrings.FIZZBUZZ;
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,17 +19,17 @@ public class PrintFizzBuzzShould {
 	
 	@Test
 	public void return_fizz_for_divisible_by_three() {
-		assertEquals("fizz", printFizzBuzz.determineFizzBuzz(3));
+		assertEquals(FIZZ.toString(), printFizzBuzz.determineFizzBuzz(3));
 	}
 	
 	@Test
 	public void return_buzz_for_divisible_by_five() {
-		assertEquals("buzz", printFizzBuzz.determineFizzBuzz(10));
+		assertEquals(BUZZ.toString(), printFizzBuzz.determineFizzBuzz(10));
 	}
 	
 	@Test
 	public void return_fizzbuzz_for_divisible_by_three_and_five() {
-		assertEquals("fizzbuzz", printFizzBuzz.determineFizzBuzz(15));
+		assertEquals(FIZZBUZZ.toString(), printFizzBuzz.determineFizzBuzz(15));
 	}
 	
 	@Test
