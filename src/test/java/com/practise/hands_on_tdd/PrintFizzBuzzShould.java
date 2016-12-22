@@ -22,4 +22,9 @@ public class PrintFizzBuzzShould {
 	public void return_buzz_for_divisible_by_five() {
 		assertEquals("buzz", printFizzBuzz.getTextInteger(10));
 	}
+	
+	@Test
+	public void return_fizzbuzz_for_divisible_by_five() {
+		assertEquals("fizzbuzz", printFizzBuzz.getTextInteger(15));
+	}
 }
