@@ -5,15 +5,7 @@ public class PrintFizzBuzz {
 	private static final String FIZZBUZZ = "fizzbuzz";
 	private static final String BUZZ = "buzz";
 	private static final String FIZZ = "fizz";
-
-	public int printFinalString() {
-		int count = 0;
-		for(int i=0; i<=100; i++) {
-			System.out.println("[" + i + "]   :   " + determineFizzBuzz(i));
-			count = i;
-		}
-		return count;
-	}
+	
 
 	public String determineFizzBuzz(int input) {
 		if((input % 3 == 0) && (input % 5 == 0)) {
