@@ -33,4 +33,9 @@ public class PrintFizzBuzzShould {
 		assertEquals("13", printFizzBuzz.getTextInteger(13));
 	}
 	
+	@Test
+	public void print_all_from_1_to_100() {
+		assertEquals(100, printFizzBuzz.printFinalString());
+	}
+	
 }
