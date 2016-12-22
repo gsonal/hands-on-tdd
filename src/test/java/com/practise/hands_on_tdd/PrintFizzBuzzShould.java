@@ -15,22 +15,22 @@ public class PrintFizzBuzzShould {
 	
 	@Test
 	public void return_fizz_for_divisible_by_three() {
-		assertEquals("fizz", printFizzBuzz.getTextInteger(3));
+		assertEquals("fizz", printFizzBuzz.determineFizzBuzz(3));
 	}
 	
 	@Test
 	public void return_buzz_for_divisible_by_five() {
-		assertEquals("buzz", printFizzBuzz.getTextInteger(10));
+		assertEquals("buzz", printFizzBuzz.determineFizzBuzz(10));
 	}
 	
 	@Test
 	public void return_fizzbuzz_for_divisible_by_three_and_five() {
-		assertEquals("fizzbuzz", printFizzBuzz.getTextInteger(15));
+		assertEquals("fizzbuzz", printFizzBuzz.determineFizzBuzz(15));
 	}
 	
 	@Test
 	public void return_same_integer_for_everything_else() {
-		assertEquals("13", printFizzBuzz.getTextInteger(13));
+		assertEquals("13", printFizzBuzz.determineFizzBuzz(13));
 	}
 	
 	@Test

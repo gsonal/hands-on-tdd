@@ -9,13 +9,13 @@ public class PrintFizzBuzz {
 	public int printFinalString() {
 		int count = 0;
 		for(int i=0; i<=100; i++) {
-			System.out.println("[" + i + "]   :   " + getTextInteger(i));
+			System.out.println("[" + i + "]   :   " + determineFizzBuzz(i));
 			count = i;
 		}
 		return count;
 	}
 
-	public String getTextInteger(int input) {
+	public String determineFizzBuzz(int input) {
 		if((input % 3 == 0) && (input % 5 == 0)) {
 			return FIZZBUZZ;
 		} else if(input % 5 == 0) {
