@@ -24,7 +24,13 @@ public class PrintFizzBuzzShould {
 	}
 	
 	@Test
-	public void return_fizzbuzz_for_divisible_by_five() {
+	public void return_fizzbuzz_for_divisible_by_three_and_five() {
 		assertEquals("fizzbuzz", printFizzBuzz.getTextInteger(15));
 	}
+	
+	@Test
+	public void return_same_integer_for_everything_else() {
+		assertEquals("13", printFizzBuzz.getTextInteger(13));
+	}
+	
 }
