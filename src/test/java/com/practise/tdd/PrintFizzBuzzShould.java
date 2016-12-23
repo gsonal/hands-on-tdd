@@ -18,8 +18,18 @@ public class PrintFizzBuzzShould {
 	}
 	
 	@Test
-	public void return_fizz_for_divisible_by_three() {
+	public void return_same_interger_for_one() {
+		assertEquals("1", printFizzBuzz.determineFizzBuzz(1));
+	}
+	
+	@Test
+	public void return_fizz_for_three() {
 		assertEquals(FIZZ.toString(), printFizzBuzz.determineFizzBuzz(3));
+	}
+	
+	@Test
+	public void return_fizz_for_divisible_by_three() {
+		assertEquals(FIZZ.toString(), printFizzBuzz.determineFizzBuzz(9));
 	}
 	
 	@Test
