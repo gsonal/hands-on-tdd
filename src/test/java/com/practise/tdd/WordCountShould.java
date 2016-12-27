@@ -1,5 +1,6 @@
 package com.practise.tdd;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class WordCountShould {
 	}
 	
 	@Test
-	public void count_unique_words_in_single_word_string() {
-		
+	public void return_unique_words_in_single_word_string() {
+		assertEquals("TDD 1", wordCount.getUnqiueWordsFromString("TDD"));
 	}
 }
