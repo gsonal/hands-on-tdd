@@ -29,4 +29,14 @@ public class PerfectNumberValidatorShould {
 	public void return_true_for_number_six(){
 		assertTrue(perfectNumberValidator.isPerfectNumber(6));
 	}
+	
+	@Test
+	public void return_false_for_number_seven(){
+		assertFalse(perfectNumberValidator.isPerfectNumber(7));
+	}
+	
+	@Test
+	public void return_false_for_number_eleven(){
+		assertFalse(perfectNumberValidator.isPerfectNumber(11));
+	}
 }
