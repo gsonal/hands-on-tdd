@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.practise.tdd.util.PrimeNumberGenerator;
+
 public class PerfectNumberValidatorShould {
 
 	PerfectNumberValidator perfectNumberValidator;
@@ -13,6 +15,7 @@ public class PerfectNumberValidatorShould {
 	@Before
 	public void doSetup() {
 		perfectNumberValidator = new PerfectNumberValidator();
+		perfectNumberValidator.setPrimeNumberGenerator(new PrimeNumberGenerator());
 	}
 	
 	@Test
@@ -39,4 +42,5 @@ public class PerfectNumberValidatorShould {
 	public void return_false_for_number_eleven(){
 		assertFalse(perfectNumberValidator.isPerfectNumber(11));
 	}
+	
 }

@@ -3,8 +3,12 @@ package com.practise.tdd;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.practise.tdd.util.PrimeNumberGenerator;
+
 public class PerfectNumberValidator {
 
+	PrimeNumberGenerator primeNumberGenerator;
+	
 	public boolean isPerfectNumber(int number) {
 		List<Integer> divisorsOfNumber = getAllDivisors(number);
 		
@@ -27,46 +31,19 @@ public class PerfectNumberValidator {
 	}
 
 	private int getDivisorsForRemainder(List<Integer> validDivisors, int remainder) {
-		int[] primeNumberDivisors = getAllPrimeNumbersLessThanDividend(remainder);
+		List<Integer> primeNumberDivisors = primeNumberGenerator.getAllPrimeNumbersLessThanInput (remainder);
+		primeNumberDivisors.remove(new Integer(1));
 		
-		for(int divisorIndex = 0; divisorIndex < primeNumberDivisors.length; divisorIndex++) {
-			int currentDivisor = primeNumberDivisors[divisorIndex];
+		for(Integer currentDivisor : primeNumberDivisors) {
 			if(remainder % currentDivisor == 0) {
 				remainder = remainder/currentDivisor;
 				validDivisors.add(currentDivisor);
 			}
 		}
+		
 		return remainder;
 	}
 	
-	private int[] getAllPrimeNumbersLessThanDividend(int currentDividend) {
-		List<Integer> allPrimeNumbersUnderDividend = new ArrayList<>();
-		for(int digit=2; digit<=currentDividend; digit++) {
-			if(isPrime(digit)) {
-				allPrimeNumbersUnderDividend.add(digit);
-			}
-		}
-		
-		int[] primes = new int[allPrimeNumbersUnderDividend.size()];
-		for(int idx=0; idx < primes.length; idx++) {
-			primes[idx] = allPrimeNumbersUnderDividend.get(idx);
-		}
-		return primes;
-	}
-	
-	
-	private boolean isPrime(int input) {
-		int midOfInput = input / 2;
-		
-		for (int count = 2; count <= midOfInput; count++) {
-			if (input % count == 0) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
-
 	private boolean sumOfDivisorsEqualsNumber(List<Integer> divisorsOfNumber, int inputNumber) {
 		int sumOfdivisors = 0;
 		for(Integer divisor : divisorsOfNumber) {
@@ -79,4 +56,8 @@ public class PerfectNumberValidator {
 		return false;
 	}
 
+	public void setPrimeNumberGenerator(PrimeNumberGenerator primeNumberGenerator) {
+		this.primeNumberGenerator = primeNumberGenerator;
+	}
+	
 }
