@@ -42,5 +42,10 @@ public class PerfectNumberValidatorShould {
 	public void return_false_for_number_eleven(){
 		assertFalse(perfectNumberValidator.isPerfectNumber(11));
 	}
+
+	@Test
+	public void return_true_for_number_twenty_eight(){
+		assertTrue(perfectNumberValidator.isPerfectNumber(28));
+	}
 	
 }
