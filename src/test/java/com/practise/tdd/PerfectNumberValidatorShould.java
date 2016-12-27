@@ -48,4 +48,19 @@ public class PerfectNumberValidatorShould {
 		assertTrue(perfectNumberValidator.isPerfectNumber(28));
 	}
 	
+	@Test
+	public void return_true_for_number_four_hundred_and_ninety_six(){
+		assertTrue(perfectNumberValidator.isPerfectNumber(496));
+	}
+	
+	@Test
+	public void return_false_for_number_one_thousand_(){
+		assertFalse(perfectNumberValidator.isPerfectNumber(1000));
+	}
+	
+	@Test
+	public void return_true_for_number_eight_thousand_one_hundred_and_twenty_eigth(){
+		assertTrue(perfectNumberValidator.isPerfectNumber(8128));
+	}
+	
 }

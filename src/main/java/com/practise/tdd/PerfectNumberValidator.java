@@ -20,14 +20,22 @@ public class PerfectNumberValidator {
 	
 	private List<Integer> getAllDivisors(int dividend) {
 		List<Integer> validDivisors = new ArrayList<>();
+		//getDivisorsByPrimeFactorization(dividend, validDivisors);
+		
+		getAllPossibleDivisors(dividend, validDivisors);
+		
+		return validDivisors;
+	}
+
+
+	private void getDivisorsByPrimeFactorization(int dividend,
+			List<Integer> validDivisors) {
 		validDivisors.add(new Integer(1));
 		
 		int remainder = dividend;
 		while(remainder > 1) {
 			remainder = getDivisorsForRemainder(validDivisors, remainder);
 		}
-		
-		return validDivisors;
 	}
 
 	private int getDivisorsForRemainder(List<Integer> validDivisors, int remainder) {
@@ -42,6 +50,15 @@ public class PerfectNumberValidator {
 		}
 		
 		return remainder;
+	}
+	
+	private void getAllPossibleDivisors(int dividend,	List<Integer> validDivisors) {
+		for(int digit=1; digit < dividend; digit++) {
+			if(dividend % digit == 0) {
+				validDivisors.add(digit);
+			}
+		}
+		
 	}
 	
 	private boolean sumOfDivisorsEqualsNumber(List<Integer> divisorsOfNumber, int inputNumber) {
