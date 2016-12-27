@@ -20,17 +20,23 @@ public class PerfectNumberValidator {
 		
 		int remainder = dividend;
 		while(remainder > 1) {
-			int[] primeNumberDivisors = {2,3,5,7};
-			
-			for(int divisorIndex = 0; divisorIndex < primeNumberDivisors.length; divisorIndex++) {
-				if(remainder % primeNumberDivisors[divisorIndex] == 0) {
-					remainder = remainder/primeNumberDivisors[divisorIndex];
-					validDivisors.add(primeNumberDivisors[divisorIndex]);
-				}
-			}
+			remainder = getDivisorsForRemainder(validDivisors, remainder);
 		}
 		
 		return validDivisors;
+	}
+
+	private int getDivisorsForRemainder(List<Integer> validDivisors, int remainder) {
+		int[] primeNumberDivisors = {2,3,5,7};
+		
+		for(int divisorIndex = 0; divisorIndex < primeNumberDivisors.length; divisorIndex++) {
+			int currentDivisor = primeNumberDivisors[divisorIndex];
+			if(remainder % currentDivisor == 0) {
+				remainder = remainder/currentDivisor;
+				validDivisors.add(currentDivisor);
+			}
+		}
+		return remainder;
 	}
 	
 	
