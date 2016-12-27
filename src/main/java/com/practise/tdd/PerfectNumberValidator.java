@@ -1,9 +1,10 @@
 package com.practise.tdd;
 
+
 public class PerfectNumberValidator {
 
-	public boolean isPerfectNumber() {
+	public boolean isPerfectNumber(int number) {
 		return false;
 	}
-
+	
 }
