@@ -15,6 +15,11 @@ public class WordCountShould {
 	
 	@Test
 	public void return_unique_words_in_single_word_string() {
-		assertEquals("TDD 1", wordCount.getUnqiueWordsFromString("TDD"));
+		assertEquals("TDD 1", wordCount.getUnqiueWordsWithCountFromString("TDD"));
+	}
+	
+	@Test
+	public void return_unique_words_with_count_in_two_word_string() {
+		assertEquals("TDD 1, CleanCode 1", wordCount.getUnqiueWordsWithCountFromString("TDD CleanCode"));
 	}
 }
