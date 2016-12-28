@@ -8,10 +8,7 @@ public class PerfectNumberValidator {
 	public boolean isPerfectNumber(int number) {
 		List<Integer> divisorsOfNumber = getAllPossibleDivisors(number);
 		
-		if(sumOfDivisorsEqualsNumber(divisorsOfNumber, number))
-			return true;
-		
-		return false;
+		return (sumOfDivisorsEqualsNumber(divisorsOfNumber, number)) ? true : false;
 	}
 	
 	private List<Integer> getAllPossibleDivisors(int dividend) {
@@ -31,9 +28,7 @@ public class PerfectNumberValidator {
 		}
 		
 		System.out.println("Sum for input " + inputNumber + " is " + sumOfdivisors);
-		if(sumOfdivisors == inputNumber)
-			return true;
-		return false;
+		return (sumOfdivisors == inputNumber) ? true : false;
 	}
 
 }
