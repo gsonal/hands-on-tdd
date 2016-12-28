@@ -18,8 +18,8 @@ public class WordCountShould {
 	}
 	
 	@Test
-	public void return_unique_words_in_single_word_string() {
-		Map<String, Integer> outputWordCount = wordCount.getUnqiueWordsWithCountFromString("TDD");
+	public void return_unique_words_with_count_in_single_word_string() {
+		Map<String, Integer> outputWordCount = wordCount.getUnqiueWordsWithCount("TDD");
 		assertNotNull(outputWordCount);
 		assertEquals(1, outputWordCount.size());
 		assertEquals(new Integer(1), outputWordCount.get("TDD"));
@@ -27,7 +27,7 @@ public class WordCountShould {
 	
 	@Test
 	public void return_unique_words_with_count_in_two_word_string() {
-		Map<String, Integer> outputWordCount = wordCount.getUnqiueWordsWithCountFromString("TDD CleanCode");
+		Map<String, Integer> outputWordCount = wordCount.getUnqiueWordsWithCount("TDD CleanCode");
 		assertNotNull(outputWordCount);
 		assertEquals(2, outputWordCount.size());
 		assertEquals(new Integer(1), outputWordCount.get("TDD"));
@@ -36,7 +36,7 @@ public class WordCountShould {
 	
 	@Test
 	public void return_unique_words_with_count_in_repeated_string() {
-		Map<String, Integer> outputWordCount = wordCount.getUnqiueWordsWithCountFromString("TDD CleanCode TDD Practice");
+		Map<String, Integer> outputWordCount = wordCount.getUnqiueWordsWithCount("TDD CleanCode TDD Practice");
 		assertNotNull(outputWordCount);
 		assertEquals(3, outputWordCount.size());
 		assertEquals(new Integer(2), outputWordCount.get("TDD"));

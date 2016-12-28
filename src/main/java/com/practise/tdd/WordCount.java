@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class WordCount {
 
-	public Map<String, Integer> getUnqiueWordsWithCountFromString(String input) {
+	public Map<String, Integer> getUnqiueWordsWithCount(String input) {
 		List<String> allWords = Arrays.asList(input.split(" "));		
 		return countUniqueWords(allWords);		
 	}
@@ -16,12 +16,7 @@ public class WordCount {
 	private Map<String, Integer> countUniqueWords(List<String> words) {
 		Map<String, Integer> uniqueWordCountMap = new HashMap<>();
 		words.forEach(word -> {
-			if(uniqueWordCountMap.containsKey(word)) {
-				Integer existingCount = uniqueWordCountMap.get(word);
-				uniqueWordCountMap.put(word, ++existingCount);
-			} else {
-				uniqueWordCountMap.put(word, 1);
-			}			
+			uniqueWordCountMap.put(word, uniqueWordCountMap.getOrDefault(word, 0) + 1);
 		});
 		
 		return uniqueWordCountMap;
