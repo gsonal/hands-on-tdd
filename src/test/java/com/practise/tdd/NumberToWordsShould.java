@@ -82,4 +82,9 @@ public class NumberToWordsShould {
 		assertEquals("three thousand nine hundred and ninety nine", numberToWords.getTexualRepresentationForNumber(new Integer(3999)));
 	}
 	
+	@Test
+	public void return_four_thousand_and_twenty_for_4020() {
+		assertEquals("four thousand and twenty", numberToWords.getTexualRepresentationForNumber(new Integer(4020)));
+	}
+	
 }

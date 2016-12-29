@@ -1,8 +1,12 @@
 package com.practise.tdd;
 
-import static com.practise.tdd.common.NumberToWordAppenders.SPACE;
-import static com.practise.tdd.common.NumberToWordAppenders.HUNDRED;
+import static com.practise.tdd.common.NumberComparisons.lessThanEqualToTwenty;
+import static com.practise.tdd.common.NumberComparisons.lessThanHundred;
+import static com.practise.tdd.common.NumberComparisons.moreThanTwenty;
+import static com.practise.tdd.common.NumberComparisons.moreThanHundred;
 import static com.practise.tdd.common.NumberToWordAppenders.AND;
+import static com.practise.tdd.common.NumberToWordAppenders.HUNDRED;
+import static com.practise.tdd.common.NumberToWordAppenders.SPACE;
 import static com.practise.tdd.common.NumberToWordAppenders.THOUSAND;
 
 import java.util.HashMap;
@@ -51,13 +55,15 @@ public class SpecialDigitsTextMapper extends DigitsTextMapper {
 		
 		int remainderFromThousand = number % 1000; 
 		if(remainderFromThousand != 0) {
-			if(remainderFromThousand < 20) {
+			if(lessThanEqualToTwenty(remainderFromThousand)) {
 				numberInWords.append(SPACE).append(AND).append(SPACE);
 				numberInWords.append(digitToWordsMap.get(remainderFromThousand));
-			} else if(remainderFromThousand > 10 && remainderFromThousand < 100) {
+			} 
+			else if(moreThanTwenty(remainderFromThousand) && lessThanHundred(remainderFromThousand)) {
 				numberInWords.append(SPACE).append(AND).append(SPACE);
 				appendTensDigitsValue(remainderFromThousand, numberInWords);
-			} else if(remainderFromThousand > 100) {
+			} 
+			else if(moreThanHundred(remainderFromThousand)) {
 				numberInWords.append(SPACE);
 				appendHundredthDigitValue(remainderFromThousand, numberInWords);
 			} 
@@ -73,7 +79,7 @@ public class SpecialDigitsTextMapper extends DigitsTextMapper {
 		if(remainderFromHundred != 0) {
 			numberInWords.append(SPACE).append(AND).append(SPACE);
 			
-			if(remainderFromHundred < 20) {
+			if(lessThanEqualToTwenty(remainderFromHundred)) {
 				numberInWords.append(digitToWordsMap.get(remainderFromHundred));
 			} else {
 				appendTensDigitsValue(remainderFromHundred, numberInWords);

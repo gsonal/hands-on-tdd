@@ -1,5 +1,10 @@
 package com.practise.tdd.util;
 
+import static com.practise.tdd.common.NumberComparisons.lessThanTwenty;
+import static com.practise.tdd.common.NumberComparisons.lessThanHundred;
+import static com.practise.tdd.common.NumberComparisons.moreThanHundred;
+import static com.practise.tdd.common.NumberComparisons.moreThanThousand;
+
 import com.practise.tdd.DigitsTextMapper;
 import com.practise.tdd.SmallDigitsTextMapper;
 import com.practise.tdd.SpecialDigitsTextMapper;
@@ -24,24 +29,10 @@ public class DigitRangeChecker {
 		return new SpecialDigitsTextMapper(10);
 	}
 	
-	private boolean lessThanTwenty(Integer number) {
-		return number < 20;
-	}
-
-	private boolean lessThanHundred(Integer number) {
-		return number < 100;
-	}
-	
 	private boolean divisibleByTen(Integer number) {
 		return (number % 10 == 0);
 	}
 	
-	private boolean moreThanHundred(Integer number) {
-		return number >= 100;
-	}
 	
-	private boolean moreThanThousand(Integer number) {
-		return number >= 1000;
-	}
 	
 }
