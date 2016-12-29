@@ -13,10 +13,26 @@ private Map<Integer, String> ones_and_teens = new HashMap<>();
 	
 	
 	public String getTexualRepresentationForNumber(Integer number) {
-		
+		if(lessThanHundred(number) && divisibleByTen(number)) {
+			 getTextForMultiplesOfTenWithinHundred();
+		}
 		return getTextForSingleDigitAndTeens(number);
 	}
 
+	private String getTextForMultiplesOfTenWithinHundred() {
+		return "";
+		
+	}
+
+
+	private boolean divisibleByTen(Integer number) {
+		return (number % 10 == 0);
+	}
+	
+	private boolean lessThanHundred(Integer number) {
+		return number < 100;
+	}
+	
 	private String getTextForSingleDigitAndTeens(Integer number) {
 		return ones_and_teens.get(number);
 	}

@@ -18,4 +18,10 @@ public class NumberToWordsShould {
 	public void return_zero_for_0() {
 		assertEquals("zero", numberToWords.getTexualRepresentationForNumber(new Integer(0)));
 	}
+	
+	@Test
+	public void return_twenty_for_20() {
+		assertEquals("twenty", numberToWords.getTexualRepresentationForNumber(new Integer(20)));
+	}
+	
 }
