@@ -46,4 +46,9 @@ public class NumberToWordsShould {
 	public void return_one_hundred_for_100() {
 		assertEquals("one hundred", numberToWords.getTexualRepresentationForNumber(new Integer(100)));
 	}
+	
+	@Test
+	public void return_one_hundred_and_one_for_101() {
+		assertEquals("one hundred and one", numberToWords.getTexualRepresentationForNumber(new Integer(101)));
+	}
 }
