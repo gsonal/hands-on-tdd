@@ -1,5 +1,7 @@
 package com.practise.tdd;
 
+
+import static com.practise.tdd.common.NumberToWordAppenders.SPACE;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +21,8 @@ public class NumberToWords {
 		}
 		if(lessThanHundred(number) && divisibleByTen(number)) {
 			 return getTextForMultiplesOfTenWithinHundred(number);
+		} else if(lessThanHundred(number) && !divisibleByTen(number)) {
+			return getTextForDoubleDigit(number);
 		}
 		return String.valueOf(number);
 	}
@@ -42,6 +46,16 @@ public class NumberToWords {
 	
 	private String getTextForSingleDigitAndTeens(Integer number) {
 		return ones_and_teens.get(number);
+	}
+	
+	private String getTextForDoubleDigit(Integer number) {
+		StringBuilder numberInWords = new StringBuilder();
+		int numberAtOnesPlace = number % 10;
+		
+		numberInWords.append(tys_multiples_of_ten.get(number - numberAtOnesPlace));
+		numberInWords.append(SPACE);
+		numberInWords.append(ones_and_teens.get(numberAtOnesPlace));
+		return numberInWords.toString();
 	}
 	
 	private void initializeAllMaps() {
