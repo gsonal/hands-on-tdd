@@ -62,5 +62,24 @@ public class NumberToWordsShould {
 		assertEquals("nine hundred and ninety nine", numberToWords.getTexualRepresentationForNumber(new Integer(999)));
 	}
 	
+	@Test
+	public void return_one_thousand_for_1000() {
+		assertEquals("one thousand", numberToWords.getTexualRepresentationForNumber(new Integer(1000)));
+	}
+	
+	@Test
+	public void return_one_thousand_and_nine_for_1009() {
+		assertEquals("one thousand and nine", numberToWords.getTexualRepresentationForNumber(new Integer(1009)));
+	}
+	
+	@Test
+	public void return_two_thousand_and_nineteen_for_2019() {
+		assertEquals("two thousand and nineteen", numberToWords.getTexualRepresentationForNumber(new Integer(2019)));
+	}
+	
+	@Test
+	public void return_three_thousand_nine_hundred_and_ninety_nine_for_3999() {
+		assertEquals("three thousand nine hundred and ninety nine", numberToWords.getTexualRepresentationForNumber(new Integer(3999)));
+	}
 	
 }
