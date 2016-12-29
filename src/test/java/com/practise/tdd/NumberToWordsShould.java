@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.practise.tdd.util.DigitRangeChecker;
+
 public class NumberToWordsShould {
 
 	NumberToWords numberToWords;
@@ -12,6 +14,7 @@ public class NumberToWordsShould {
 	@Before
 	public void doSetup() {
 		numberToWords = new NumberToWords();
+		numberToWords.setDigitRangeChecker(new DigitRangeChecker());
 	}
 
 	@Test
