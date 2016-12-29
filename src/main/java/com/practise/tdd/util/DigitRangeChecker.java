@@ -14,6 +14,10 @@ public class DigitRangeChecker {
 		if(lessThanHundred(input) && divisibleByTen(input)) {
 			return new TenMultiplierDigitsTextMapper();
 		}
+		
+		if(moreThanThousand(input)) {
+			return new SpecialDigitsTextMapper(1000);
+		}
 		if(moreThanHundred(input)) {
 			return new SpecialDigitsTextMapper(100);
 		}
@@ -36,7 +40,8 @@ public class DigitRangeChecker {
 		return number >= 100;
 	}
 	
-	private boolean multiplesOfHundred(Integer number) {
-		return (number % 100 == 0);
+	private boolean moreThanThousand(Integer number) {
+		return number >= 1000;
 	}
+	
 }
