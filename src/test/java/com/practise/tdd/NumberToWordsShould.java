@@ -31,4 +31,19 @@ public class NumberToWordsShould {
 	public void return_twenty_one_for_21() {
 		assertEquals("twenty one", numberToWords.getTexualRepresentationForNumber(new Integer(21)));
 	}
+	
+	@Test
+	public void return_fifty_for_50() {
+		assertEquals("fifty", numberToWords.getTexualRepresentationForNumber(new Integer(50)));
+	}
+	
+	@Test
+	public void return_ninety_five_for_95() {
+		assertEquals("ninety five", numberToWords.getTexualRepresentationForNumber(new Integer(95)));
+	}
+	
+	@Test
+	public void return_one_hundred_for_100() {
+		assertEquals("one hundred", numberToWords.getTexualRepresentationForNumber(new Integer(100)));
+	}
 }
