@@ -2,6 +2,7 @@ package com.practise.tdd;
 
 import static com.practise.tdd.common.NumberToWordAppenders.SPACE;
 import static com.practise.tdd.common.NumberToWordAppenders.HUNDRED;
+import static com.practise.tdd.common.NumberToWordAppenders.AND;
 
 import java.util.HashMap;
 
@@ -44,14 +45,21 @@ public class SpecialDigitsTextMapper extends DigitsTextMapper {
 		int numberAtHundredthPlace = number/100;
 		numberInWords.append(digitToWordsMap.get(numberAtHundredthPlace));
 		numberInWords.append(SPACE).append(HUNDRED);
-		if(number%100 != 0) {
-			numberInWords.append(SPACE);
-			appendTensDigitsValue(number, numberInWords);
+		
+		int remainderFromHundred = number % 100; 
+		if(remainderFromHundred != 0) {
+			numberInWords.append(SPACE).append(AND).append(SPACE);
+			
+			if(remainderFromHundred < 10) {
+				numberInWords.append(digitToWordsMap.get(remainderFromHundred));
+			} else {
+				appendTensDigitsValue(remainderFromHundred, numberInWords);
+			}
 		}
 	}
 
 	private void appendTensDigitsValue(Integer number, StringBuilder numberInWords) {
-		int numberAtOnesPlace = number % 10;			
+		int numberAtOnesPlace = number % 10;
 		numberInWords.append(digitToWordsMap.get(number - numberAtOnesPlace));
 		numberInWords.append(SPACE);
 		numberInWords.append(digitToWordsMap.get(numberAtOnesPlace));

@@ -51,4 +51,16 @@ public class NumberToWordsShould {
 	public void return_one_hundred_and_one_for_101() {
 		assertEquals("one hundred and one", numberToWords.getTexualRepresentationForNumber(new Integer(101)));
 	}
+	
+	@Test
+	public void return_two_hundred_and_fifty_five_for_255() {
+		assertEquals("two hundred and fifty five", numberToWords.getTexualRepresentationForNumber(new Integer(255)));
+	}
+	
+	@Test
+	public void return_nine_hundred_and_ninety_nine_for_999() {
+		assertEquals("nine hundred and ninety nine", numberToWords.getTexualRepresentationForNumber(new Integer(999)));
+	}
+	
+	
 }
