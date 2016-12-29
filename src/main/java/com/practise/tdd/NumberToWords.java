@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class NumberToWords {
 
-private Map<Integer, String> ones_and_teens = new HashMap<>();
+	private Map<Integer, String> ones_and_teens = new HashMap<>();
+	private Map<Integer, String> tys_multiples_of_ten = new HashMap<>();
 	
 	NumberToWords() {
 		initializeAllMaps();
@@ -13,17 +14,23 @@ private Map<Integer, String> ones_and_teens = new HashMap<>();
 	
 	
 	public String getTexualRepresentationForNumber(Integer number) {
-		if(lessThanHundred(number) && divisibleByTen(number)) {
-			 getTextForMultiplesOfTenWithinHundred();
+		if(lessThanTwenty(number)) {
+			return getTextForSingleDigitAndTeens(number);
 		}
-		return getTextForSingleDigitAndTeens(number);
+		if(lessThanHundred(number) && divisibleByTen(number)) {
+			 return getTextForMultiplesOfTenWithinHundred(number);
+		}
+		return String.valueOf(number);
 	}
 
-	private String getTextForMultiplesOfTenWithinHundred() {
-		return "";
-		
+
+	private boolean lessThanTwenty(Integer number) {
+		return number < 20;
 	}
 
+	private String getTextForMultiplesOfTenWithinHundred(Integer number) {
+		return tys_multiples_of_ten.get(number);
+	}
 
 	private boolean divisibleByTen(Integer number) {
 		return (number % 10 == 0);
@@ -58,5 +65,14 @@ private Map<Integer, String> ones_and_teens = new HashMap<>();
 		ones_and_teens.put(new Integer(17), "seventeen");
 		ones_and_teens.put(new Integer(18), "eighteen");
 		ones_and_teens.put(new Integer(19), "nineteen");
+		
+		tys_multiples_of_ten.put(new Integer(20), "twenty");
+		tys_multiples_of_ten.put(new Integer(30), "thirty");
+		tys_multiples_of_ten.put(new Integer(40), "fourty");
+		tys_multiples_of_ten.put(new Integer(50), "fifty");
+		tys_multiples_of_ten.put(new Integer(60), "sixty");
+		tys_multiples_of_ten.put(new Integer(70), "seventy");
+		tys_multiples_of_ten.put(new Integer(80), "eighty");
+		tys_multiples_of_ten.put(new Integer(90), "ninety");
 	}
 }
