@@ -24,4 +24,8 @@ public class NumberToWordsShould {
 		assertEquals("twenty", numberToWords.getTexualRepresentationForNumber(new Integer(20)));
 	}
 	
+	@Test
+	public void return_twenty_one_for_21() {
+		assertEquals("twenty one", numberToWords.getTexualRepresentationForNumber(new Integer(21)));
+	}
 }
