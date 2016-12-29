@@ -14,7 +14,10 @@ public class DigitRangeChecker {
 		if(lessThanHundred(input) && divisibleByTen(input)) {
 			return new TenMultiplierDigitsTextMapper();
 		}
-		return new SpecialDigitsTextMapper();
+		if(divisibleByHundred(input)) {
+			return new SpecialDigitsTextMapper(100);
+		}
+		return new SpecialDigitsTextMapper(10);
 	}
 	
 	private boolean lessThanTwenty(Integer number) {
@@ -27,5 +30,9 @@ public class DigitRangeChecker {
 	
 	private boolean divisibleByTen(Integer number) {
 		return (number % 10 == 0);
+	}
+	
+	private boolean divisibleByHundred(Integer number) {
+		return (number % 100 == 0);
 	}
 }
