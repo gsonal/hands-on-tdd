@@ -1,5 +1,7 @@
 package com.practise.tdd;
 
+import static com.practise.tdd.util.PromotionAdjustor.getPriceDifference;
+import static com.practise.tdd.util.PromotionAdjustor.productEligibleForPromotion;
 import static java.lang.String.valueOf;
 
 import java.util.HashMap;
@@ -34,22 +36,11 @@ public class Checkout {
 
 	private Integer adjustForPromotions(Map<String, Integer> productCountInCart, Integer totalCost) {
 		for(Promotions promotion : ongoingPromotions) {
-			String product = promotion.getProductSku();
-			Integer countEligibleForDiscount = promotion.getQuantity();
-			Integer discountedPrice = promotion.getDiscountedPrice();
-			
 			if(productEligibleForPromotion(productCountInCart, promotion)) {
-				Integer priceForPurchasedQnty = countEligibleForDiscount * productPriceDao.getPriceOf(product);
-				totalCost -= (priceForPurchasedQnty - discountedPrice);
+				totalCost -= getPriceDifference(promotion, productPriceDao.getPriceOf(promotion.getProductSku()));
 			}
 		}
-		
 		return totalCost;
 	}
 
-	private boolean productEligibleForPromotion(Map<String, Integer> productCountInCart, Promotions promotion) {
-		String product = promotion.getProductSku();
-		return (productCountInCart.containsKey(product) && promotion.getQuantity() == productCountInCart.get(product));
-	}
-	
 }

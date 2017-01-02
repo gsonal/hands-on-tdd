@@ -3,12 +3,12 @@ package com.practise.tdd;
 public class Promotions {
 	
 	private String productSku;
-	private Integer quantity;
+	private Integer eligibleQuantity;
 	private Integer discountedPrice;
 	
 	public Promotions(String productSku, Integer quantity,	Integer discountedPrice) {
 		this.productSku = productSku;
-		this.quantity = quantity;
+		this.eligibleQuantity = quantity;
 		this.discountedPrice = discountedPrice;
 	}
 
@@ -16,8 +16,8 @@ public class Promotions {
 		return productSku;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer geteligibleQuantity() {
+		return eligibleQuantity;
 	}
 
 	public Integer getDiscountedPrice() {
