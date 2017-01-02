@@ -2,16 +2,21 @@ package com.practise.tdd;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class CheckoutShould {
 
 	Checkout checkout;
+	List<Promotions> runningPromotions;
 	
 	@Before
 	public void doSetup() {
-		checkout = new Checkout();
+		runningPromotions = getAvailablePromotions();
+		checkout = new Checkout(runningPromotions);
 	}
 	
 	@Test
@@ -39,4 +44,12 @@ public class CheckoutShould {
 		assertEquals(new Integer(130), checkout.total("AAA"));
 	}
 	
+	private List<Promotions> getAvailablePromotions() {
+		List<Promotions> availablePromotions = new ArrayList<>();
+		Promotions newPromotion = new Promotions("A", 3, 130);
+		availablePromotions.add(newPromotion);
+		
+		return availablePromotions;
+	}
+
 }
