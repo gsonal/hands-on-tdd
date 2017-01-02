@@ -39,11 +39,11 @@ public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 		
 		int remainderFromThousand = number % 1000; 
 		if(remainderFromThousand != 0) {
-				numberInWords.append(SPACE);
+				appendSpace(numberInWords);
 				appendHundredthDigitValue(remainderFromThousand, numberInWords);
 		}
 	}
-	
+
 	private void appendHundredthDigitValue(Integer number, StringBuilder numberInWords) {
 		if(lessThanEqualToTwenty(number)) {
 			appendUnitsOrTeensDigitsValue(number, numberInWords);
@@ -54,7 +54,7 @@ public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 			
 			int remainderFromHundred = number % 100; 
 			if(remainderFromHundred != 0) {
-					numberInWords.append(SPACE);
+					appendSpace(numberInWords);
 					appendTensDigitsValue(remainderFromHundred, numberInWords);
 			}
 		}
@@ -67,12 +67,11 @@ public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 			appendTextConnectors(numberInWords);
 			int remainderFromTen = number % 10;
 			numberInWords.append(digitToWordsMap.get(number - remainderFromTen));
-			numberInWords.append(SPACE);
+			appendSpace(numberInWords);
 			numberInWords.append(digitToWordsMap.get(remainderFromTen));
 		}
 	}
 	
-
 	private void appendUnitsOrTeensDigitsValue(Integer remainder, StringBuilder numberInWords) {
 		appendTextConnectors(numberInWords);
 		numberInWords.append(digitToWordsMap.get(remainder));
@@ -82,6 +81,10 @@ public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 		if(StringUtils.isNotEmpty(numberInWords)) {
 			numberInWords.append(AND).append(SPACE);
 		}
+	}
+	
+	private void appendSpace(StringBuilder numberInWords) {
+		numberInWords.append(SPACE);
 	}
 	
 }
