@@ -24,4 +24,9 @@ public class CheckoutShould {
 		assertEquals(new Integer(50), checkout.total("A"));
 	}
 	
+	@Test
+	public void return_100_for_cart_having_AA() {
+		assertEquals(new Integer(100), checkout.total("AA"));
+	}
+	
 }
