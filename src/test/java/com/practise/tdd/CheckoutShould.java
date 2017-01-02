@@ -29,4 +29,14 @@ public class CheckoutShould {
 		assertEquals(new Integer(100), checkout.total("AA"));
 	}
 	
+	@Test
+	public void return_130_for_cart_having_AAB() {
+		assertEquals(new Integer(130), checkout.total("AAB"));
+	}
+	
+	@Test
+	public void return_130_for_cart_having_AAA() {
+		assertEquals(new Integer(130), checkout.total("AAA"));
+	}
+	
 }

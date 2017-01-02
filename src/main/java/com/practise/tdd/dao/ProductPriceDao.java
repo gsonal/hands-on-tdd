@@ -16,8 +16,6 @@ public class ProductPriceDao {
 	}
 	
 	public Integer getPriceOf(String productSku) {
-//		productPrice.entrySet().stream().filter( item -> "A".equals(item.getKey())).collect(Collectors.toList()) );
-		
 		return productPrice.get(productSku);
 	}
 
