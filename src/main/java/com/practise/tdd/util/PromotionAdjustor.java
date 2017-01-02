@@ -9,7 +9,7 @@ public class PromotionAdjustor {
 	public static boolean productEligibleForPromotion(Map<String, Integer> cart, Promotions promotion) {
 		String product = promotion.getProductSku();
 		return (cart.containsKey(product) 
-				&& cart.get(product) == promotion.geteligibleQuantity());
+				&& cart.get(product) >= promotion.geteligibleQuantity());
 	}
 
 	public static int getPriceDifference(Promotions promotion, Integer itemPrice) {
