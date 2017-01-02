@@ -1,13 +1,12 @@
 package com.practise.tdd;
 
 import static com.practise.tdd.common.NumberComparisons.lessThanEqualToTwenty;
-import static com.practise.tdd.common.NumberComparisons.lessThanHundred;
-import static com.practise.tdd.common.NumberComparisons.moreThanHundred;
-import static com.practise.tdd.common.NumberComparisons.moreThanTwenty;
 import static com.practise.tdd.common.NumberToWordAppenders.AND;
 import static com.practise.tdd.common.NumberToWordAppenders.HUNDRED;
 import static com.practise.tdd.common.NumberToWordAppenders.SPACE;
 import static com.practise.tdd.common.NumberToWordAppenders.THOUSAND;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 
@@ -40,42 +39,49 @@ public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 		
 		int remainderFromThousand = number % 1000; 
 		if(remainderFromThousand != 0) {
-			if(lessThanEqualToTwenty(remainderFromThousand)) {
-				numberInWords.append(SPACE).append(AND).append(SPACE);
-				numberInWords.append(digitToWordsMap.get(remainderFromThousand));
-			} 
-			else if(moreThanTwenty(remainderFromThousand) && lessThanHundred(remainderFromThousand)) {
-				numberInWords.append(SPACE).append(AND).append(SPACE);
-				appendTensDigitsValue(remainderFromThousand, numberInWords);
-			} 
-			else if(moreThanHundred(remainderFromThousand)) {
 				numberInWords.append(SPACE);
 				appendHundredthDigitValue(remainderFromThousand, numberInWords);
-			} 
 		}
 	}
 	
 	private void appendHundredthDigitValue(Integer number, StringBuilder numberInWords) {
-		int numberAtHundredthPlace = number/100;
-		numberInWords.append(digitToWordsMap.get(numberAtHundredthPlace));
-		numberInWords.append(SPACE).append(HUNDRED);
-		
-		int remainderFromHundred = number % 100; 
-		if(remainderFromHundred != 0) {
-			numberInWords.append(SPACE).append(AND).append(SPACE);
+		if(lessThanEqualToTwenty(number)) {
+			appendUnitsOrTeensDigitsValue(number, numberInWords);
+		} else {
+			int numberAtHundredthPlace = number/100;
+			numberInWords.append(digitToWordsMap.get(numberAtHundredthPlace));
+			numberInWords.append(SPACE).append(HUNDRED);
 			
-			if(lessThanEqualToTwenty(remainderFromHundred)) {
-				numberInWords.append(digitToWordsMap.get(remainderFromHundred));
-			} else {
-				appendTensDigitsValue(remainderFromHundred, numberInWords);
+			int remainderFromHundred = number % 100; 
+			if(remainderFromHundred != 0) {
+					numberInWords.append(SPACE);
+					appendTensDigitsValue(remainderFromHundred, numberInWords);
 			}
 		}
 	}
 
 	private void appendTensDigitsValue(Integer number, StringBuilder numberInWords) {
-		int remainderFromTen = number % 10;
-		numberInWords.append(digitToWordsMap.get(number - remainderFromTen));
-		numberInWords.append(SPACE);
-		numberInWords.append(digitToWordsMap.get(remainderFromTen));
+		if(lessThanEqualToTwenty(number)) {
+			appendUnitsOrTeensDigitsValue(number, numberInWords);
+		} else {
+			appendTextConnectors(numberInWords);
+			int remainderFromTen = number % 10;
+			numberInWords.append(digitToWordsMap.get(number - remainderFromTen));
+			numberInWords.append(SPACE);
+			numberInWords.append(digitToWordsMap.get(remainderFromTen));
+		}
 	}
+	
+
+	private void appendUnitsOrTeensDigitsValue(Integer remainder, StringBuilder numberInWords) {
+		appendTextConnectors(numberInWords);
+		numberInWords.append(digitToWordsMap.get(remainder));
+	}
+
+	private void appendTextConnectors(StringBuilder numberInWords) {
+		if(StringUtils.isNotEmpty(numberInWords)) {
+			numberInWords.append(AND).append(SPACE);
+		}
+	}
+	
 }

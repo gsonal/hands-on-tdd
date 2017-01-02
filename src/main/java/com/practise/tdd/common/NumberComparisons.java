@@ -10,10 +10,6 @@ public class NumberComparisons {
 		return number <= 20;
 	}
 	
-	public static boolean moreThanTwenty(Integer number) {
-		return number > 20;
-	}
-	
 	public static boolean lessThanHundred(Integer number) {
 		return number < 100;
 	}
