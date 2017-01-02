@@ -44,6 +44,11 @@ public class CheckoutShould {
 		assertEquals(new Integer(130), checkout.total("AAA"));
 	}
 	
+	@Test
+	public void return_260_for_cart_having_AAAAAB() {
+		assertEquals(new Integer(260), checkout.total("AAAAAB"));
+	}
+	
 	private List<Promotions> getAvailablePromotions() {
 		List<Promotions> availablePromotions = new ArrayList<>();
 		Promotions newPromotion = new Promotions("A", 3, 130);
