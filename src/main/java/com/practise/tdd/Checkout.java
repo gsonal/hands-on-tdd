@@ -37,7 +37,9 @@ public class Checkout {
 	private Integer adjustForPromotions(Map<String, Integer> productCountInCart, Integer totalCost) {
 		for(Promotions promotion : ongoingPromotions) {
 			if(productEligibleForPromotion(productCountInCart, promotion)) {
-				totalCost -= getPriceDifference(promotion, productPriceDao.getPriceOf(promotion.getProductSku()));
+				Integer itemOriginalPrice = productPriceDao.getPriceOf(promotion.getProductSku());
+				Integer purchasedQuantity = productCountInCart.get(promotion.getProductSku());
+				totalCost -= getPriceDifference(promotion, purchasedQuantity, itemOriginalPrice);
 			}
 		}
 		return totalCost;

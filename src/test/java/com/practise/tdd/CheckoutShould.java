@@ -54,10 +54,23 @@ public class CheckoutShould {
 		assertEquals(new Integer(260), checkout.total("AAAAAA"));
 	}
 	
+	@Test
+	public void return_305_for_cart_having_AAAAAA() {
+		assertEquals(new Integer(305), checkout.total("AAAAAABD"));
+	}
+	
+	@Test
+	public void return_190_for_cart_having_AAABBD() {
+		assertEquals(new Integer(190), checkout.total("AAABBD"));
+	}
+	
 	private List<Promotions> getAvailablePromotions() {
 		List<Promotions> availablePromotions = new ArrayList<>();
 		Promotions newPromotion = new Promotions("A", 3, 130);
 		availablePromotions.add(newPromotion);
+		
+		Promotions newPromotion2 = new Promotions("B", 2, 45);
+		availablePromotions.add(newPromotion2);
 		
 		return availablePromotions;
 	}

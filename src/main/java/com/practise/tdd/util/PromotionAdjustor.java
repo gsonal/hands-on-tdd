@@ -12,12 +12,16 @@ public class PromotionAdjustor {
 				&& cart.get(product) >= promotion.geteligibleQuantity());
 	}
 
-	public static int getPriceDifference(Promotions promotion, Integer itemPrice) {
-		return getPriceForPurchasedQuantity(promotion, itemPrice) - promotion.getDiscountedPrice();
+	public static int getPriceDifference(Promotions promotion, Integer purchasedQuantity, Integer itemPrice) {
+		Integer eligibleQuantity = promotion.geteligibleQuantity();
+		Integer differenceAmount = getDifferentialAmount(promotion.getDiscountedPrice(), itemPrice, eligibleQuantity);
+
+		return (purchasedQuantity / eligibleQuantity) * differenceAmount;
 	}
-	
-	private static Integer getPriceForPurchasedQuantity(Promotions promotion, Integer itemPrice) {
-		return promotion.geteligibleQuantity() * itemPrice;
+
+	private static Integer getDifferentialAmount(Integer costAtDiscountedRate, Integer itemPrice, Integer eligibleQuantity) {
+		Integer costAtMarketRate = eligibleQuantity * itemPrice;
+		return (costAtMarketRate - costAtDiscountedRate);
 	}
-	
+
 }
