@@ -6,13 +6,12 @@ public class NumberToWords {
 
 	DigitRangeChecker digitRangeChecker;
 	
+	NumberToWords() {
+		this.digitRangeChecker = new DigitRangeChecker();
+	}
 
 	public String getTexualRepresentationForNumber(Integer number) {
 		return digitRangeChecker.getDigitMapperPerRange(number).getValue(number);
 	}
 
-	public void setDigitRangeChecker(DigitRangeChecker digitRangeChecker) {
-		this.digitRangeChecker = digitRangeChecker;
-	}
-	
 }

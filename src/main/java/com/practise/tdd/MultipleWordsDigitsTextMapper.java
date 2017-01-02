@@ -2,37 +2,22 @@ package com.practise.tdd;
 
 import static com.practise.tdd.common.NumberComparisons.lessThanEqualToTwenty;
 import static com.practise.tdd.common.NumberComparisons.lessThanHundred;
-import static com.practise.tdd.common.NumberComparisons.moreThanTwenty;
 import static com.practise.tdd.common.NumberComparisons.moreThanHundred;
+import static com.practise.tdd.common.NumberComparisons.moreThanTwenty;
 import static com.practise.tdd.common.NumberToWordAppenders.AND;
 import static com.practise.tdd.common.NumberToWordAppenders.HUNDRED;
 import static com.practise.tdd.common.NumberToWordAppenders.SPACE;
 import static com.practise.tdd.common.NumberToWordAppenders.THOUSAND;
 
-import java.util.HashMap;
-
-public class SpecialDigitsTextMapper extends DigitsTextMapper {
+public class MultipleWordsDigitsTextMapper extends DigitsTextMapper {
 
 	private int multiplier;
 	
-	public SpecialDigitsTextMapper(int multiplier) {
+	public MultipleWordsDigitsTextMapper(int multiplier) {
 		super();
 		this.multiplier = multiplier;
 	}
 	
-	@Override
-	protected DigitsTextMapper initialize() {
-		digitToWordsMap = new HashMap<>();
-		
-		SmallDigitsTextMapper smallDigitsMapper = new SmallDigitsTextMapper();
-		digitToWordsMap.putAll(smallDigitsMapper.digitToWordsMap);
-		
-		TenMultiplierDigitsTextMapper tensDigitsMapper = new TenMultiplierDigitsTextMapper();
-		digitToWordsMap.putAll(tensDigitsMapper.digitToWordsMap);
-		
-		return this;
-	}
-
 	@Override
 	public String getValue(Integer number) {
 		StringBuilder numberInWords = new StringBuilder();
@@ -88,9 +73,9 @@ public class SpecialDigitsTextMapper extends DigitsTextMapper {
 	}
 
 	private void appendTensDigitsValue(Integer number, StringBuilder numberInWords) {
-		int numberAtOnesPlace = number % 10;
-		numberInWords.append(digitToWordsMap.get(number - numberAtOnesPlace));
+		int remainderFromTen = number % 10;
+		numberInWords.append(digitToWordsMap.get(number - remainderFromTen));
 		numberInWords.append(SPACE);
-		numberInWords.append(digitToWordsMap.get(numberAtOnesPlace));
+		numberInWords.append(digitToWordsMap.get(remainderFromTen));
 	}
 }
