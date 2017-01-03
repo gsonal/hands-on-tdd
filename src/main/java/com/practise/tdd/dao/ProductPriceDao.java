@@ -19,7 +19,4 @@ public class ProductPriceDao {
 		return productPrice.get(productSku);
 	}
 
-	public Map<String, Integer> getProductPrice() {
-		return productPrice;
-	}
 }

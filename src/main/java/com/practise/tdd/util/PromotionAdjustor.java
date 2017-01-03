@@ -19,8 +19,8 @@ public class PromotionAdjustor {
 		return (purchasedQuantity / eligibleQuantity) * differenceAmount;
 	}
 
-	private static Integer getDifferentialAmount(Integer costAtDiscountedRate, Integer itemPrice, Integer eligibleQuantity) {
-		Integer costAtMarketRate = eligibleQuantity * itemPrice;
+	private static Integer getDifferentialAmount(Integer costAtDiscountedRate, Integer itemOriginalPrice, Integer eligibleQuantity) {
+		Integer costAtMarketRate = eligibleQuantity * itemOriginalPrice;
 		return (costAtMarketRate - costAtDiscountedRate);
 	}
 

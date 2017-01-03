@@ -2,7 +2,6 @@ package com.practise.tdd;
 
 import static com.practise.tdd.util.PromotionAdjustor.getPriceDifference;
 import static com.practise.tdd.util.PromotionAdjustor.productEligibleForPromotion;
-import static java.lang.String.valueOf;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +18,11 @@ public class Checkout {
 		this.ongoingPromotions = runningPromotions;
 	}
 	
-	public Integer total(String cart) {
+	public Integer total(List<String> cart) {
 		Integer totalCost = 0;
 		Map<String, Integer> productCountInCart = new HashMap<>();
 
-		for(Character item : cart.toCharArray()) {
-			String itemCode = valueOf(item);
+		for(String itemCode : cart) {
 			totalCost += productPriceDao.getPriceOf(itemCode);
 			productCountInCart.put(itemCode, productCountInCart.getOrDefault(itemCode, 0)+1);
 		}
@@ -43,6 +41,11 @@ public class Checkout {
 			}
 		}
 		return totalCost;
+	}
+
+	public List<String> scan(String item, List<String> cart) {
+		cart.add(item);
+		return cart;
 	}
 
 }
