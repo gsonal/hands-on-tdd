@@ -19,16 +19,11 @@ public class Checkout {
 	}
 	
 	public Integer total(List<String> cart) {
-		Integer totalCost = 0;
-		Map<String, Integer> productCountInCart = new HashMap<>();
-
-		for(String itemCode : cart) {
-			totalCost += productPriceDao.getPriceOf(itemCode);
-			productCountInCart.put(itemCode, productCountInCart.getOrDefault(itemCode, 0)+1);
-		}
+		Integer totalCost = getTotalCostOfItemsAtMarketPrice(cart);
+		
+		Map<String, Integer> productCountInCart = getCountPerItem(cart);
 		
 		totalCost = adjustForPromotions(productCountInCart, totalCost);
-		
 		return totalCost;
 	}
 
@@ -48,4 +43,18 @@ public class Checkout {
 		return cart;
 	}
 
+	private Integer getTotalCostOfItemsAtMarketPrice(List<String> cart) {
+		return cart.stream()
+				.map(item -> productPriceDao.getPriceOf(item))
+				.reduce(0, (total, price) -> total + price);
+	}
+	
+	private Map<String, Integer> getCountPerItem(List<String> cart) {
+		Map<String, Integer> productCountInCart = new HashMap<>();
+		for(String itemCode : cart) {
+			productCountInCart.put(itemCode, productCountInCart.getOrDefault(itemCode, 0)+1);
+		}
+		return productCountInCart;
+	}
+	
 }
