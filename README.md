@@ -1,6 +1,6 @@
 ## hands-on-tdd
 
-Common repository for all TDD and Clean code practice sessions.
+Common repository for all TDD and Clean code practice sessions. This is now an old repo, only kept for revision.
 
 
 ###Imp. Points from the discussions
